@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tableAlign {
+    width: 40%;
+    border-collapse: collapse;
+}
+
+.tableAlign th,
+.tableAlign td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.sub {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sub:hover {
+    background-color: #555;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical; /* Allow vertical resizing */
+}
+.grid{
+    background-color: #black;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/details.css">
+</head>
+<body>
+  <form action="/home" method="post">
+    <h3>ENTER THE ROLL NO BELOW TO FIND THE DETAILS OF THE STUDENT</h3><br><br>
+        <input type="number" placeholder="Roll Number" name="rollNo">
+        <br>
+        <input class="sub" type="submit">
+  </form>
+<table class="rwd-table">
+  <tr>
+    <th>Name</th>
+    <td data-th="Movie Title"></td>
+  </tr>
+  <tr>
+    <td data-th="Movie Title">Star Wars</td>
+    <td data-th="Genre">Adventure, Sci-fi</td>
+    <td data-th="Year">1977</td>
+    <td data-th="Gross">$460,935,665</td>
+  </tr>
+  <tr>
+    <td data-th="Movie Title">Howard The Duck</td>
+    <td data-th="Genre">"Comedy"</td>
+    <td data-th="Year">1986</td>
+    <td data-th="Gross">$16,295,774</td>
+  </tr>
+  <tr>
+    <td data-th="Movie Title">American Graffiti</td>
+    <td data-th="Genre">Comedy, Drama</td>
+    <td data-th="Year">1973</td>
+    <td data-th="Gross">$115,000,000</td>
+  </tr>
+</table>
+
+  <form action="/details" method="get">
+          <table class="tableAlign">
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td>
+                  <%= checkRoll.name %>
+                </td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td>
+                  <%= checkRoll.phone %>
+                </td>
+              </tr>
+              <tr>
+                <th>Year</th>
+                <td>
+                  <%= checkRoll.year %>
+                </td>
+              </tr>
+              <tr>
+                <th>Roll Number</th>
+                <td>
+                  <%= checkRoll.rollNo %>
+                </td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>
+                  <%= checkRoll.address %>
+                </td>
+              </tr>
+              <tr>
+                <th>Mode</th>
+                <td>
+                  <%= checkRoll.Mode %>
+                </td>
+              </tr>
+              <tr>
+                <th>Mentor Name</th>
+                <td>
+                  <%= checkRoll.MentorName %>
+                </td>
+              </tr>
+              <tr>
+                <th>Mentor ID</th>
+                <td>
+                  <%= checkRoll.MentorId %>
+                </td>
+              </tr>
+              <tr>
+                <th>CGPA</th>
+                <td>
+                  <%= checkRoll.Cgpa %>
+                </td>
+              </tr>
+              <tr>
+                <th>Arrear</th>
+                <td>
+                  <%= checkRoll.Arrear %>
+                </td>
+              </tr>
+              <th>Count</th>
+                <td>
+                  <%= checkRoll.count%>
+                </td>
+            </tbody>
+          </table>
+          <input class="sub" type="submit" />
+   </form>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="css/sideBar.css">
+    <link rel="stylesheet" href="css/chooseNorm.css">
+</head>
+<body>
+    <!-- Hero -->
+  
+  <section class="et-hero-tabs">
+    <img src="/bannariamman.png" alt="" srcset="">
+		<h2>Hello Kumar!</h2>
+    <div class="et-hero-tabs-container">
+      <a class="et-hero-tab" href="#tab-es6">Disciplinary Issues</a>
+      <a class="et-hero-tab" href="#tab-flexbox">Private Chat</a>
+      <span class="et-hero-tab-slider"></span>
+    </div>
+	<br>
+		<h3>Welcome to BIT's Disciplinary Monitoring! </h3>
+		<h3>Here click on the below links to access the respective functionalities</h3>
+
+  </section>
+
+  <!-- Main -->
+  <main class="et-main">
+    <section class="et-slide" id="tab-es6">
+    <h1>Disciplinary issue</h3>
+      <p>It generally means the disciplinary issues committed by the our students</p>
+      <p>Or those who don't obey the rules and restrictions of our college</p>
+      <a href="/home">Discipline Issue</a>
+    </section>
+    <section class="et-slide" id="tab-flexbox">
+      <h1>Private Chat</h1>
+      <p>Issue between two separate individuals</p>
+      <a href="/private">Private Chat</a>
+    </section>
+  
+  <script>
+    class StickyNavigation {
+	constructor() {
+		this.currentId = null;
+		this.currentTab = null;
+		this.tabContainerHeight = 70;
+		let self = this;
+		$('.et-hero-tab').click(function() { 
+			self.onTabClick(event, $(this)); 
+		});
+		$(window).scroll(() => { this.onScroll(); });
+		$(window).resize(() => { this.onResize(); });
+	}
+	
+	onTabClick(event, element) {
+		event.preventDefault();
+		let scrollTop = $(element.attr('href')).offset().top - this.tabContainerHeight + 1;
+		$('html, body').animate({ scrollTop: scrollTop }, 600);
+	}
+	
+	onScroll() {
+		this.checkTabContainerPosition();
+    this.findCurrentTabSelector();
+	}
+	
+	onResize() {
+		if(this.currentId) {
+			this.setSliderCss();
+		}
+	}
+	
+	checkTabContainerPosition() {
+		let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+		if($(window).scrollTop() > offset) {
+			$('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
+		} 
+		else {
+			$('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+		}
+	}
+	
+	findCurrentTabSelector(element) {
+		let newCurrentId;
+		let newCurrentTab;
+		let self = this;
+		$('.et-hero-tab').each(function() {
+			let id = $(this).attr('href');
+			let offsetTop = $(id).offset().top - self.tabContainerHeight;
+			let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
+			if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+				newCurrentId = id;
+				newCurrentTab = $(this);
+			}
+		});
+		if(this.currentId != newCurrentId || this.currentId === null) {
+			this.currentId = newCurrentId;
+			this.currentTab = newCurrentTab;
+			this.setSliderCss();
+		}
+	}
+	
+	setSliderCss() {
+		let width = 0;
+		let left = 0;
+		if(this.currentTab) {
+			width = this.currentTab.css('width');
+			left = this.currentTab.offset().left;
+		}
+		$('.et-hero-tab-slider').css('width', width);
+		$('.et-hero-tab-slider').css('left', left);
+	}
+	
+}
+new StickyNavigation();
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  <style>
+    .grid {
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <header>
+    <nav>
+      <ul>
+        <li>Details of <strong><%= checkRoll.name %></strong></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form action="/detailsSample" method="get">
+    <div class="grid">
+      <div class="filters">
+        
+        
+      </div>
+
+      <table id="purifierTable">
+          <tbody>
+              <tr>
+                <th>Name</th>
+                <td>
+                  <%= checkRoll.name %>
+                </td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td>
+                  <%= checkRoll.phone %>
+                </td>
+              </tr>
+              <tr>
+                <th>Year</th>
+                <td>
+                  <%= checkRoll.year %>
+                </td>
+              </tr>
+              <tr>
+                <th>Roll Number</th>
+                <td>
+                  <%= checkRoll.rollNo %>
+                </td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>
+                  <%= checkRoll.address %>
+                </td>
+              </tr>
+              <tr>
+                <th>Mode</th>
+                <td>
+                  <%= checkRoll.Mode %>
+                </td>
+              </tr>
+              <tr>
+                <th>Mentor Name</th>
+                <td>
+                  <%= checkRoll.MentorName %>
+                </td>
+              </tr>
+              <tr>
+                <th>Mentor ID</th>
+                <td>
+                  <%= checkRoll.MentorId %>
+                </td>
+              </tr>
+              <tr>
+                <th>CGPA</th>
+                <td>
+                  <%= checkRoll.Cgpa %>
+                </td>
+              </tr>
+              <tr>
+                <th>Arrear</th>
+                <td>
+                  <%= checkRoll.Arrear %>
+                </td>
+              </tr>
+              <th>Count</th>
+                <td>
+                  <%= checkRoll.count%>
+                </td>
+            </tbody>
+      </table>
+  </form>
+  <input class="sub" type="submit"/>
+  <script>
+    // Get filter elements
+    const brandFilter = document.getElementById('brand');
+    const priceFilter = document.getElementById('price');
+    // Get table and rows
+    const table = document.getElementById('purifierTable');
+    const rows = table.getElementsByTagName('tr');
+    // Add event listeners to filters
+    brandFilter.addEventListener('change', filterTable);
+    priceFilter.addEventListener('change', filterTable);
+    // Filter table based on selected options
+    function filterTable() {
+      const selectedBrand = brandFilter.value;
+      const selectedPrice = priceFilter.value;
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const brand = row.getElementsByTagName('td')[0].textContent;
+        const price = parseFloat(row.getElementsByTagName('td')[2].textContent.replace('$', ''));
+        let brandMatch = true;
+        let priceMatch = true;
+        if (selectedBrand && brand !== selectedBrand) {
+          brandMatch = false;
+        }
+        if (selectedPrice) {
+          const [min, max] = selectedPrice.split('-').map(parseFloat);
+          if (isNaN(max)) {
+            priceMatch = price >= min;
+          } else {
+            priceMatch = price >= min && price <= max;
+          }
+        }
+        if (brandMatch && priceMatch) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

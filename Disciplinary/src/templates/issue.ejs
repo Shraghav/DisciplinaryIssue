@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/details.css"> -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+</head>
+<style>
+    input[type="submit"]{
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 14%;
+    float: right;
+}
+</style>
+<body>
+    <form action="/issue" class="container" method="post">
+    <header>
+    <nav>
+      <ul>
+        <li><strong>Enter the issue committed by the student</strong></li>
+      </ul>
+    </nav>
+  </header>
+  
+        <table class="tableAlign">
+            <tbody>
+                <tr>
+                    <th>Reporter Name</th>
+                    <td>
+                        <%= name1 %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Student's Name</th>
+                    <td>
+                        <%= name2 %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Reason to block the mail</th>
+                    <td>
+                        <textarea name="Nature" rows="5" cols="30"></textarea>
+                    </td>
+                </tr>
+                <tr>
+            </tbody>
+        </table>
+        <input class="sub" type="submit">
+    </form>
+</body>
+</html>

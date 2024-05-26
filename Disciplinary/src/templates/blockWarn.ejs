@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/blockWarn.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />   
+</head>
+<header>
+    <nav>
+      <ul>
+        <li><strong>The list of students are given below</strong></li>
+      </ul>
+    </nav>
+  </header>
+<body>
+     <div class="grid" style="width: 20%;">
+      <div class="filters">
+        <label for="name">Name</label>
+        <select id="name">
+          <option value="">All</option>
+          <option value="Harish">Harish</option>
+          <option value="Raghav">Raghav</option>
+        </select>
+
+        <label for="year">Year</label>
+        <select id="year">
+          <option value="">All</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+    </div>
+    <table class="tableAlign">
+        <form action="blockWarn" method="get">
+            <% len = Object.keys(issueDetails).length %>
+            <tr>
+                <th>Name</th>
+                <th>Reported day and time</th>
+                <th>Block Mail</th>
+                <th>Issue</th>
+            </tr>
+            <tr>
+                <td> <%= data.studentName %></td>
+                <td> <%= data.reportedOn %></td>
+                <td>
+                    <select name="block" class="blockClass">
+                            <option value="yes">YES</option>
+                            <option selected value="no">NO</option>
+                    </select>
+                </td>
+                <td><%= data.nature %></td>
+                </tr>
+            <% for( let index = 0; index < len; index++ ) { %>
+                <tr>
+                    <td> <%= issueDetails[index].studentName %></td>
+                    <td> <%= issueDetails[index].reportedOn %></td>
+                    <td>
+                    <select name="block" class="blockClass">
+                            <option value="yes">YES</option>
+                            <option selected value="no">NO</option>
+                    </select>
+                    </td>
+                    <td><%= issueDetails[index].nature %></td>
+                </tr>
+            <% } %>
+            
+        </form>
+    </table>
+    <input type="submit" onclick="alertMMessage()" value="submit" style="width: 20%; float: right;" >
+    <script>
+    // Get filter elements
+    function alertMMessage(){
+      alert("Submitted successfully");
+    }
+    const nameChange = document.getElementById('name');
+    const yearChange = document.getElementById('year');
+    // Get table and rows
+    const table = document.getElementById('purifierTable');
+    const rows = table.getElementsByTagName('tr');
+    // Add event listeners to filters
+    nameChange.addEventListener('change', filterTable);
+    yearChange.addEventListener('change', filterTable);
+    // Filter table based on selected options
+    function filterTable() {
+      const selectedBrand = nameChange.value;
+      const selectedPrice = yearChange.value;
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const brand = row.getElementsByTagName('td')[0].textContent;
+        let brandMatch = true;
+        let priceMatch = true;
+        if (selectedBrand && brand !== selectedBrand) {
+          brandMatch = false;
+        }
+        
+        if (brandMatch) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

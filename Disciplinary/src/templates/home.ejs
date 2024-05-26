@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/sideBar.css">
+</head>
+<body>
+ <div class="wrapper" id="sidebar-container">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Welcome!</h3>
+    </div>
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a href="/loginAdmin">Admin Login</a>
+      </li>
+      <li class="active">
+        <a href="/loginGeneral">Reporter Login</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fas fa-align-left"></i>
+        </button>      
+            <!-- <h1>Disciplinary Issue Monitoring</h1> -->
+      </div>
+    </nav>
+    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  
+$(document).ready(function () {
+  $("#sidebarCollapse").on("click", function () {
+    $("#sidebar").toggleClass("active");
+  });
+});
+</script>
+  <div style="background-color:  #464141;" class="login-box">
+  <form action="/home" method="post">
+    <h3 style="font-family: cursive;">ENTER THE ROLL NO BELOW TO FIND THE DETAILS OF THE STUDENT</h3><br><br>        
+    <div class="user-box">
+        <input type="number" required id="rollNo" placeholder="Roll Number" name="rollNo">
+    </div>
+    <input class="sub" type="submit">
+  </form>
+</div>
+
+</body>
+</html>
